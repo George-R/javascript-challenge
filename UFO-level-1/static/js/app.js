@@ -28,21 +28,21 @@ function handleSubmit() {
 
     if(UFO){
         filter = 1;
-        matchData = tableData.filter(obs => obs.datetime == UFO);
+        matchData = tableData.filter(tri => tri.datetime == UFO);
         tbody.html("");
-        matchData.forEach(row => {
-            tbody.append("tr");
-            for (key in row){
-                var cell = tbody.append("td");
-                cell.text(row[key]);
-            }
-        });
+        matchData.forEach((UFO) => {
+            var row = tbody.append("tr");
+            Object.entries(UFO).forEach(([key, value]) => {
+              var cell = row.append("td");
+              cell.text(value);
+            });
+          })
     };
   
     // clear the input value
     d3.select("#datetime").node().value = "";  
 
-    
+    console.log(filter)
     
     function returnData(filtered_val){
         if (filtered_val){
